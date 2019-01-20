@@ -1,27 +1,41 @@
 import React, { Component } from 'react';
 import './App.css';
+import axios from 'axios';
+import GalleryList from './../GalleryList/GalleryList.js';
 
 class App extends Component {
   constructor(){
     super();
-
     this.state = {
       gallery: [
         {id: 1, path: <img src="images/goat_small.jpg" alt=" "/>, description: 'Photo of a goat taken at Glacier National Park.', likes: 0},
-        { id: 2, path: <img src="images/manchester_city.jpg" alt=" "/>, description: 'Welcome to Manchester, entrance to Ethiad Stadium.', likes: 0 }
-      
+        { id: 2, path: <img src="images/manchester_city.jpg" alt=" "/>, description: 'Welcome to Manchester, entrance to Ethiad Stadium.', likes: 0 },
       ] // end this.state.gallery
     } // end state
-
   } // end constructor
-  appendPics = () => {
-    let newGallery = [];
-    for (let i = 0; i < this.state.gallery.length; i++) {
-      let galleryPic = <li>{this.state.gallery[i].path}</li>
-      newGallery.push(galleryPic)
-    }
-    return newGallery;
-  }
+
+  // need this life cycle method to reset local state to data from server
+  componentDidMount() {
+  this.getGallery();
+  } // end componentDidMount
+
+  getGallery = () => {
+    // using axios to get gallery.data information from server
+    // data is in a GET route in gallery.router
+    axios({
+      method: 'GET',
+      url: '/gallery'
+    }).then((response)=>{
+      console.log('in response getGallery', response)
+      this.setState({
+        gallery: response.data,
+      })
+    }).catch((error)=>{
+      console.log('error in getGallery', error);
+      alert('did not get data/response from server')
+    })
+  } // end getGallery
+
   render() {
     return (
       <div className="App">
@@ -30,10 +44,7 @@ class App extends Component {
         </header>
         <br/>
         <p>Gallery goes here</p>
-        {/* <p>{this.state.gallery[i].path}</p> */}
-        <ul>
-          {this.appendPics()}
-        </ul>
+        <GalleryList gallery={this.state.gallery}/>
         {/* <img src="images/goat_small.jpg"/> */}
       </div>
     ); // end return
