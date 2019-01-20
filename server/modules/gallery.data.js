@@ -6,6 +6,6 @@ const galleryItems = [
     { id: 5, path: 'images/grand_canyon.jpg', description: 'Grand Canyon View', likes: 0 },
     { id: 6, path: 'images/mn_stone_arch_bridge.jpg', description: 'Downtown Minneapolis Stone Arch Bridge', likes: 0 },
 
-]
+];
 
 module.exports = galleryItems;
