@@ -6,7 +6,7 @@ class GalleryList extends Component {
         let newGallery = [];
         for (let i = 0; i < this.props.gallery.length; i++) {
             let galleryPic = this.props.gallery[i];
-            let galleryRow = (<GalleryListItem key={i} galleryPic={galleryPic}/>)
+            let galleryRow = (<GalleryListItem key={i} galleryPic={galleryPic} getGallery={this.props.getGallery}/>)
         newGallery.push(galleryRow)
         }
     return newGallery;

@@ -44,7 +44,7 @@ class App extends Component {
         </header>
         <br/>
         <p>Gallery goes here</p>
-        <GalleryList gallery={this.state.gallery}/>
+        <GalleryList gallery={this.state.gallery} getGallery={this.getGallery}/>
         {/* <img src="images/goat_small.jpg"/> */}
       </div>
     ); // end return

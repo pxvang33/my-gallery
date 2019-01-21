@@ -18,7 +18,7 @@ class BookListItem extends Component {
     showDescription = () => {
         console.log('in description');
         this.setState({
-            picture: false,
+            picture: true,
         })  
     } // end showDescription
     addLike = () => {
@@ -26,6 +26,7 @@ class BookListItem extends Component {
             method: 'PUT',
             url: `/gallery/like/${this.props.galleryPic.id}`
         }).then((response)=>{
+            this.props.getGallery();
 
         }).catch((error)=>{
             console.log('like not working', error);
@@ -35,14 +36,14 @@ class BookListItem extends Component {
     render(){
         let picture = this.state.picture;
         let show;
-        if (picture){
-            show = <td onClick={this.showPicture}><img src={this.props.galleryPic.path} alt="" /></td>
+        if (picture === true){
+            show = <td className="object" onClick={this.showPicture}><img src={this.props.galleryPic.path} alt="" /></td>
         }
         else{
-            show = <td onClick={this.showDescription}>{this.props.galleryPic.description}</td>
+            show = <td className="object" onClick={this.showDescription}>{this.props.galleryPic.description}</td>
         }
-        return (<tr>
-            <td>{this.props.galleryPic.id}</td>
+        return (<tr className="object">
+            {/* <td>{this.props.galleryPic.id}</td> */}
             {/* 404 error happens when I wrap path in an image tag */}
             {/* <td onClick={this.showDescription}><img src={this.props.galleryPic.path} alt="" /></td> */}
             {/* <td>{this.props.galleryPic.description}</td> */}
