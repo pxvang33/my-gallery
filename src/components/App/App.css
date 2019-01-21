@@ -24,4 +24,19 @@
 
 .object {
   float: left;
+  object-fit: cover;
+
+  /* display: inline-block; */
 }
+
+.show{
+  /* flex-wrap: wrap; */
+  color: greenyellow;
+  /* object-fit: cover; */
+  margin: 10px;
+  object-position: 50% 50%; 
+
+  /* position: absolute;  */
+}
+
+

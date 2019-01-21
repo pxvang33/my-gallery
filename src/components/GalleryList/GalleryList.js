@@ -7,17 +7,15 @@ class GalleryList extends Component {
         for (let i = 0; i < this.props.gallery.length; i++) {
             let galleryPic = this.props.gallery[i];
             let galleryRow = (<GalleryListItem key={i} galleryPic={galleryPic} getGallery={this.props.getGallery}/>)
-        newGallery.push(galleryRow)
+            newGallery.push(galleryRow)
         }
     return newGallery;
   } //end appendPics
     render(){
         return(
-            <table>
-                <tbody>
-                        {this.appendPics()}
-                </tbody>
-            </table>
+            <div>
+                {this.appendPics()}
+            </div>
         );
     } // end render
 } // end class

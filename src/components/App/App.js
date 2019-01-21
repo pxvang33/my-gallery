@@ -39,17 +39,15 @@ class App extends Component {
 
   render() {
     return (
-      <React.Fragment>
-        <CssBaseline />
+
         <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Gallery of my life</h1>
+          <h1 className="App-title">Peng Xue Vang Gallery</h1>
         </header>
         <br/>
-        <p>Gallery goes here</p>
         <GalleryList gallery={this.state.gallery} getGallery={this.getGallery}/>
         </div>
-      </React.Fragment>
+
     ); // end return
   } // end render
 } // end class
