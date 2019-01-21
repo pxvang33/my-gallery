@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import Button from '@material-ui/core/Button';
+
+
 // are we storing data? if not, don't need constructor
 class BookListItem extends Component {
     constructor () {
@@ -45,11 +48,10 @@ class BookListItem extends Component {
         return (<tr className="object">
             {/* <td>{this.props.galleryPic.id}</td> */}
             {/* 404 error happens when I wrap path in an image tag */}
-            {/* <td onClick={this.showDescription}><img src={this.props.galleryPic.path} alt="" /></td> */}
-            {/* <td>{this.props.galleryPic.description}</td> */}
             {show}
             <td>{this.props.galleryPic.likes}</td>
-            <td><button onClick={this.addLike}>Like</button></td>
+            <td><Button onClick={this.addLike} variant="outlined" color="primary" className="like">
+            Like</Button></td>
         </tr>
 
         ); // end return

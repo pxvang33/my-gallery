@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:5000",
   "dependencies": {
+    "@material-ui/core": "^3.9.0",
     "axios": "^0.17.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
