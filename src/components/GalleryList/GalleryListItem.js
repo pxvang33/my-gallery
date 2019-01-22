@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -37,41 +36,46 @@ class BookListItem extends Component {
             console.log('like not working', error);
         })
     } // changeLike end
+        showLikes = () => {
+        if (this.props.galleryPic.likes === 0) {
+            return 'Be the first person to like this!'
+        }
+        else if (this.props.galleryPic.likes === 1) {
+            return 'One person liked this.'
+        }
+        else {
+            return `${this.props.galleryPic.likes} people liked this.`
+        }
+    }
     render(){
         let picture = this.state.picture;
         let show;
         if (picture === true) {
-            show = <Card className="show">
-                <CardContent>
-                    <Typography>
-                        <span onClick={this.showPicture}><img src={this.props.galleryPic.path} alt="" /></span>
-                    </Typography>
-                    <Typography>
-                        <span>{this.props.galleryPic.likes} people like this photo.</span>
-                    </Typography>
-                    <CardActions>
-                        <Button onClick={this.addLike} variant="outlined" color="primary" className="like">
-                            Like</Button>
-                    </CardActions>
-                </CardContent>
-            </Card>
+            show =(                       
+                 <span onClick={this.showPicture}><img src={this.props.galleryPic.path} alt="" /></span>
+            )
         }
         else {
-            show = <Card className="show">
-                <CardContent>
-                    <Typography >
-                        <span onClick={this.showDescription}>{this.props.galleryPic.description}</span>
-                    </Typography>
-                    <CardActions>
-                        <Button onClick={this.addLike} variant="outlined" color="primary" className="like">
-                            Like</Button>
-                    </CardActions>
-                </CardContent>
-            </Card>
+            show = (
+                 <span onClick={this.showDescription}>{this.props.galleryPic.description}</span>
+            )
         }
         return (
-            <div className="object" >
-                    {show}
+                <div className="object" >
+                    <Card className="show">
+                        <CardContent>
+                            <Typography >
+                                {show}
+                            </Typography>
+                            <Typography >
+                               {this.showLikes()}
+                            </Typography>
+                            <CardActions>
+                                <Button onClick={this.addLike} variant="outlined" color="primary" className="like">
+                                    Like</Button>
+                            </CardActions>
+                        </CardContent>
+                    </Card>
                 </div>
         ); // end return
     } // end render

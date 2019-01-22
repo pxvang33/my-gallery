@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import GalleryList from './../GalleryList/GalleryList.js';
-import CssBaseline from '@material-ui/core/CssBaseline';
 
 class App extends Component {
   constructor(){
@@ -11,7 +10,7 @@ class App extends Component {
       gallery: [
         {id: 1, path: <img src="images/goat_small.jpg" alt=" "/>, description: 'Photo of a goat taken at Glacier National Park.', likes: 0},
         { id: 2, path: <img src="images/manchester_city.jpg" alt=" "/>, description: 'Welcome to Manchester, entrance to Ethiad Stadium.', likes: 0 },
-      ] // end this.state.gallery
+      ] 
     } // end state
   } // end constructor
 
