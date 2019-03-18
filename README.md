@@ -10,9 +10,6 @@ Before you get started, make sure you have the following software installed on y
 - [Nodemon](https://nodemon.io/)
 
 ### SETUP
-
-Create your database and tables using the provided `data.sql` file. Start the server.
-
 ```
 npm install
 npm run server
